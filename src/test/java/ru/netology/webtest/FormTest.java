@@ -15,17 +15,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FormTest {
 
-    private WebDriver driver;
+    WebDriver driver;
 
     @BeforeAll
-    static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
+    static void setupAll() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
     void setUp() {
-        driver = new ChromeDriver();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
@@ -34,9 +32,8 @@ public class FormTest {
     }
 
     @AfterEach
-    void tearDown() {
+    void teardown() {
         driver.quit();
-        driver = null;
     }
 
     @Test
